@@ -282,6 +282,8 @@ with model:
 
     st.plotly_chart(goFig3, use_container_width=True, sharing='streamlit')
 
+    st.markdown("---")
+
     # Energy Demand Flows Plot
     with st.expander("Simplistic Producer Agents Energy Demand"):
         st.write("This is a [simplistic](https://gist.github.com/danodriscoll/4c706422ac95b5b31f41c580a1848842) representation of the energy demand flows required by producer agent(s). There is an amount of fossil hydrocarbon 'energy' available. This is 'stock' energy. Renewable energy sources are available and will grow in availability compounding at a given percentage each model step. This is 'flow' energy. Each one monetary unit of combined government agent and consumer agents desires will require one unit of energy to fulfil.")
