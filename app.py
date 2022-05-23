@@ -318,4 +318,4 @@ with model:
     st.plotly_chart(goFig4, use_container_width=True, sharing='streamlit')
 
 with footer:
-    st.caption("[Studio](https://www.modernmoney.studio) website. [Developer](https://www.danielodriscoll.me.uk) website.")
+    st.caption("[Studio](https://www.modernmoney.studio) website. [TransmissionVamp](https://www.transmissionvamp.com) website.")
