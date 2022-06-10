@@ -6,9 +6,9 @@ import plotly.graph_objects as go
 # Must be called first.
 st.set_page_config(
     layout="wide", # 'centered' or 'wide'
-    page_title='Studio: ABMSIM-TEST',
+    page_title='ABMSIM-TEST',
     menu_items={
-        'About': "This shareable data application. Visit https://www.modernmoney.studio for information."
+        'About': "This shareable data application. Visit https://www.transmissionvamp.com."
     }
 )
 
@@ -318,4 +318,4 @@ with model:
     st.plotly_chart(goFig4, use_container_width=True, sharing='streamlit')
 
 with footer:
-    st.caption("[Studio](https://www.modernmoney.studio) website. [TransmissionVamp](https://www.transmissionvamp.com) website.")
+    st.caption("View a list of [data apps](https://share.streamlit.io/danodriscoll/transvamp-apps/main/app.py). Visit the [TransmissionVamp](https://www.transmissionvamp.com) website.")
