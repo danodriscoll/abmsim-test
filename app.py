@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide", # 'centered' or 'wide'
     page_title='ABMSIM-TEST',
     menu_items={
-        'About': "This shareable data application. Visit https://www.transmissionvamp.com."
+        'About': "This is a shareable data application. Visit https://www.transmissionvamp.com."
     }
 )
 
