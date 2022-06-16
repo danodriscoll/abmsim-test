@@ -286,9 +286,9 @@ with model:
     st.markdown("---")
 
     # Energy Demand Flows Plot
-    with st.expander("Simplistic Producer Agents Energy Demand"):
-        st.write("This is a [simplistic](https://gist.github.com/danodriscoll/4c706422ac95b5b31f41c580a1848842) representation of the energy demand flows required by producer agent(s). There is an amount of fossil hydrocarbon 'energy' available. This is 'stock' energy. Renewable energy sources are available and will grow in availability compounding at a given percentage each model step. This is 'flow' energy. Each one monetary unit of combined government agent and consumer agents desires will require one unit of energy to fulfil.")
-        st.write("The model uses all available 'flow' (renewable) energy with any shortfall coming from 'stock' (fossil hydrocarbon) energy. Negative externality (pollution) from 'stock' energy use is returned (to the environment agent) at 2% of total amount used.")
+    st.subheader("Simplistic Producer Agents Energy Demand")
+    st.write("This is a [simplistic](https://gist.github.com/danodriscoll/4c706422ac95b5b31f41c580a1848842) representation of the energy demand flows required by producer agent(s). There is an amount of fossil hydrocarbon 'energy' available. This is 'stock' energy. Renewable energy sources are available and will grow in availability compounding at a given percentage each model step. This is 'flow' energy. Each one monetary unit of combined government agent and consumer agents desires will require one unit of energy to fulfil.")
+    st.write("The model uses all available 'flow' (renewable) energy with any shortfall coming from 'stock' (fossil hydrocarbon) energy. Negative externality (pollution) from 'stock' energy use is returned (to the environment agent) at 2% of total amount used.")
 
     goFig4 = go.Figure()
     goFig4.add_trace(go.Scatter(x=df_energy['x'][0], y=df_energy['y'][0], mode=df_energy['mode'][0], name=df_energy['name'][0]))
