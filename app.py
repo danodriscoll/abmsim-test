@@ -21,7 +21,10 @@ with header:
     st.title('Agent-Based Model Simple: Test Ouput')
 
     with st.expander("Beginning of a System"):
-        st.subheader("There shall run one coinage throughout the realm")
+        st.subheader(' "There shall run one coinage throughout the realm."')
+        st.caption("-- Anglo Saxon Kings")
+        st.markdown("---")
+
         st.write("A government monetary system is engineered. Money is specified in a unit of account. Law will allow (and demand) local credit relationships be settled in the government unit of account. This is a model of a hypothetical economy in which there is no private (commercial bank) money and hence there are no interest payments. In this strongly simplified economy, agents, beyond the institution of government, can be divided conceptually into their business activities on the one hand, selling services and paying out wages and, on the other hand, receiving income, consuming and accumulating assets (monetary wealth) when they act as households. The government wishes to provision itself. It buys services and pays for them with money. Money is made acceptable as a means of payment because:")
 
         st.markdown(
