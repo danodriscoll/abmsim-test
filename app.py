@@ -1,4 +1,4 @@
-# Studio: ABMSIM-TEST
+#ABMSIM-TEST
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
@@ -19,12 +19,10 @@ footer = st.container()
 
 with header:
     st.title('Agent-Based Model Simple: Test Ouput')
+    st.subheader('"There shall run one coinage throughout the realm."')
+    st.caption("-- Anglo Saxon Kings")
 
     with st.expander("Beginning of a System"):
-        st.subheader(' "There shall run one coinage throughout the realm."')
-        st.caption("-- Anglo Saxon Kings")
-        st.markdown("---")
-
         st.write("A government monetary system is engineered. Money is specified in a unit of account. Law will allow (and demand) local credit relationships be settled in the government unit of account. This is a model of a hypothetical economy in which there is no private (commercial bank) money and hence there are no interest payments. In this strongly simplified economy, agents, beyond the institution of government, can be divided conceptually into their business activities on the one hand, selling services and paying out wages and, on the other hand, receiving income, consuming and accumulating assets (monetary wealth) when they act as households. The government wishes to provision itself. It buys services and pays for them with money. Money is made acceptable as a means of payment because:")
 
         st.markdown(
@@ -319,4 +317,4 @@ with model:
     st.plotly_chart(goFig4, use_container_width=True, sharing='streamlit')
 
 with footer:
-    st.caption("View a list of [data apps](https://share.streamlit.io/danodriscoll/transvamp-apps/main/app.py). Visit the [TransmissionVamp](https://www.transmissionvamp.com) website.")
+    st.caption("Visit the [TransmissionVamp](https://www.transmissionvamp.com) website.")
