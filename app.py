@@ -285,7 +285,7 @@ with model:
 
     # Energy Demand Flows Plot
     st.subheader("Simplistic Producer Agents Energy Demand")
-    st.write("This is a [simplistic](https://gist.github.com/danodriscoll/4c706422ac95b5b31f41c580a1848842) representation of the energy demand flows required by producer agent(s). There is an amount of fossil hydrocarbon 'energy' available. This is 'stock' energy. Renewable energy sources are available and will grow in availability compounding at a given percentage each model step. This is 'flow' energy. Each one monetary unit of combined government agent and consumer agents desires will require one unit of energy to fulfil.")
+    st.write("This is a simplistic representation of the energy demand flows required by producer agent(s). There is an amount of fossil hydrocarbon 'energy' available. This is 'stock' energy. Renewable energy sources are available and will grow in availability compounding at a given percentage each model step. This is 'flow' energy. Each one monetary unit of combined government agent and consumer agents desires will require one unit of energy to fulfil.")
     st.write("The model uses all available 'flow' (renewable) energy with any shortfall coming from 'stock' (fossil hydrocarbon) energy. Negative externality (pollution) from 'stock' energy use is returned (to the environment agent) at 2% of total amount used.")
 
     goFig4 = go.Figure()
@@ -315,6 +315,47 @@ with model:
     )
 
     st.plotly_chart(goFig4, use_container_width=True, sharing='streamlit')
+
+    body = """ '''
+1. Calculate energy required to provide the service and stock polution returned.
+
+One monetary unit requires one unit of energy.
+'''
+
+# Energy required based on combined (monetary) government agent and consumer agents desires.
+total_energy_required = (government_supplied + consumer_supplied)
+energy_shortfall = 0
+
+# Opening energy flows.
+environment_agent.opening_flow_energy = environment_agent.units_flow_energy # To calculate flows of 'flow' (renewable) energy.
+environment_agent.opening_stock_energy = environment_agent.units_stock_energy # To calculate flows of 'stock' (fossil hydrocarbon) energy.
+
+# Use all available flow (renewable) energy and make up any shortfall with stock (fossil hydrocarbon) energy.
+if environment_agent.units_flow_energy >= 0 and (total_energy_required <= environment_agent.units_flow_energy): # No shortfall in flow energy
+    environment_agent.units_flow_energy -= total_energy_required
+elif environment_agent.units_flow_energy >= 0 and (total_energy_required > environment_agent.units_flow_energy): # There is a shortfall of up to 100% of 'total_energy_required'.
+    energy_shortfall = total_energy_required - environment_agent.units_flow_energy
+    environment_agent.units_flow_energy -= environment_agent.units_flow_energy
+
+if environment_agent.units_stock_energy > 0: # Environment has remaining stock (fossil hydrocarbon) energy.
+    environment_agent.units_stock_energy -= energy_shortfall # Shortfall here might be 0 if total energy requirement has been covered by flow energy.
+else:
+    sys.exit("Program exit. Run out of stock energy.")
+
+# Closing energy flows.
+environment_agent.closing_flow_energy = environment_agent.units_flow_energy  # To calculate flows of 'flow' (renewable) energy.
+environment_agent.closing_stock_energy = environment_agent.units_stock_energy  # To calculate flows of 'stock' (fossil hydrocarbon) energy.
+
+# Flow of energy used by the Producer agent this iteration.
+self.flow_energy_used = environment_agent.opening_flow_energy - environment_agent.closing_flow_energy
+self.stock_energy_used = environment_agent.opening_stock_energy - environment_agent.closing_stock_energy
+
+# Polution returned to Environment.
+environment_agent.negative_externality += self.stock_energy_used * environment_agent.negative_externality_rate
+    """
+
+    with st.expander("simEnergy Gist"):
+        st.code(body, language = 'python')
 
 with footer:
     st.caption("Visit the [TransmissionVamp](https://www.transmissionvamp.com) website.")
